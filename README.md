@@ -58,7 +58,21 @@ const event = new Event()
 publishClick({ event })
 
 event.subscribe('global.click', ({ target }) => {
-  console.log(target, 'clicked')
+  console.log('Somebody clicked', target)
+})
+```
+
+#### Escape
+
+```js
+import Event, { publishEscape } from 'core-events'
+
+const event = new Event()
+
+publishEscape({ event })
+
+event.subscribe('global.escape', () => {
+  console.log('Somebody hit escape')
 })
 ```
 
