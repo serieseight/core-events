@@ -51,11 +51,11 @@ when a global event occurs.
 #### Click
 
 ```js
-import Event, { globalClick } from 'core-events'
+import Event, { publishClick } from 'core-events'
 
 const event = new Event()
 
-globalClick({ event })
+publishClick({ event })
 
 event.subscribe('global.click', ({ target }) => {
   console.log(target, 'clicked')
