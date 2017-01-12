@@ -43,6 +43,25 @@ event.publish('personBorn', {
 event.unsubscribe(token)
 ```
 
+### Global events
+
+Core Events also provides some handy functions to publish events
+when a global event occurs.
+
+#### Click
+
+```js
+import Event, { globalClick } from 'core-events'
+
+const event = new Event()
+
+globalClick({ event })
+
+event.subscribe('global.click', ({ target }) => {
+  console.log(target, 'clicked')
+})
+```
+
 ## Browser support
 
 Core Events is packaged with Babel, and
