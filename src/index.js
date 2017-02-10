@@ -1,4 +1,4 @@
-import { publishClick, publishEscape } from './publish'
+import { publishClick, publishEscape, publishSwipe } from './publish'
 
 const _ = new WeakMap()
 
@@ -46,6 +46,6 @@ class Event {
   }
 }
 
-export { publishClick, publishEscape }
+export { publishClick, publishEscape, publishSwipe }
 
 export default Event

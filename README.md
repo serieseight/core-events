@@ -3,7 +3,7 @@
 A simple publish/subscribe pattern
 
 - Plain old vanilla JS
-- Just 0.6kb gzipped
+- Just 1kb gzipped
 
 ## Installation
 
@@ -58,7 +58,7 @@ const event = new Event()
 publishClick({ event })
 
 event.subscribe('global.click', ({ target }) => {
-  console.log('Somebody clicked', target)
+  console.log('Somebody clicked on', target)
 })
 ```
 
@@ -73,6 +73,20 @@ publishEscape({ event })
 
 event.subscribe('global.escape', () => {
   console.log('Somebody hit escape')
+})
+```
+
+#### Swipe
+
+```js
+import Event, { publishSwipe } from 'core-events'
+
+const event = new Event()
+
+publishSwipe({ event, sensitivity: { x: 10, y: 50 } })
+
+event.subscribe('global.swipe', ({ direction, target }) => {
+  console.log(`Somebody swiped ${direction} on`, target)
 })
 ```
 
