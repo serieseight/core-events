@@ -3,7 +3,7 @@
 A simple publish/subscribe pattern
 
 - Plain old vanilla JS
-- Just 1kb gzipped
+- Just 1.2kb gzipped
 
 ## Installation
 
@@ -73,6 +73,20 @@ publishEscape({ event })
 
 event.subscribe('global.escape', () => {
   console.log('Somebody hit escape')
+})
+```
+
+#### Scroll
+
+```js
+import Event, { publishScroll } from 'core-events'
+
+const event = new Event()
+
+publishScroll({ event })
+
+event.subscribe('global.scroll', ({ direction, speed }) => {
+  console.log(`Somebody scrolled ${direction} at ${speed} px per ms`)
 })
 ```
 

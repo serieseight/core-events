@@ -14,6 +14,28 @@ const publishEscape = ({ event, name = 'global.escape' }) => {
   })
 }
 
+const publishScroll = ({ event, limit = 10, name = 'global.scroll' }) => {
+  let lastPosition = 0
+  let lastTime = 0
+
+  window.addEventListener('scroll', () => {
+    const currentPosition = window.scrollY
+    const currentTime = Date.now()
+    const time = currentTime - lastTime
+
+    if (lastTime && time >= limit) {
+      const direction = currentPosition > lastPosition ? 'down' : 'up'
+      const distance = Math.abs(lastPosition - currentPosition)
+      const speed = distance / time
+
+      event.publish(name, { direction, speed })
+    }
+
+    lastTime = currentTime
+    lastPosition = currentPosition
+  })
+}
+
 const publishSwipe = ({
   event,
   name = 'global.swipe',
@@ -65,4 +87,4 @@ const publishSwipe = ({
   window.addEventListener('mouseup', e => swipeEnd(e))
 }
 
-export { publishClick, publishEscape, publishSwipe }
+export { publishClick, publishEscape, publishScroll, publishSwipe }
