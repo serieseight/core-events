@@ -1,9 +1,19 @@
 import { supportsPassive } from './support'
 
-const publishClick = ({ event, name = 'global.click' }) => {
-  window.addEventListener('click', ({ target }) => {
-    event.publish(name, { target })
-  })
+const publishClick = ({ event, name = 'global.click', limit = 500 }) => {
+  let lastTime = 0
+
+  const handler = ({ target }) => {
+    const currentTime = Date.now()
+
+    if (currentTime - lastTime >= limit) {
+      event.publish(name, { target })
+      lastTime = currentTime
+    }
+  }
+
+  window.addEventListener('click', handler)
+  window.addEventListener('touchstart', handler)
 }
 
 const publishEscape = ({ event, name = 'global.escape' }) => {
