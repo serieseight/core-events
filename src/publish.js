@@ -24,6 +24,15 @@ const publishEscape = ({ event, name = 'global.escape' }) => {
   })
 }
 
+const publishResize = ({ debounce = 50, event, name = 'global.resize' }) => {
+  let d
+
+  window.addEventListener('resize', () => {
+    window.clearTimeout(d)
+    d = window.setTimeout(() => event.publish(name), debounce)
+  })
+}
+
 const publishScroll = ({ event, limit = 10, name = 'global.scroll' }) => {
   let lastPosition = 0
   let lastTime = 0
@@ -97,4 +106,10 @@ const publishSwipe = ({
   window.addEventListener('mouseup', e => swipeEnd(e))
 }
 
-export { publishClick, publishEscape, publishScroll, publishSwipe }
+export {
+  publishClick,
+  publishEscape,
+  publishResize,
+  publishScroll,
+  publishSwipe
+}

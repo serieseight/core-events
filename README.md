@@ -76,6 +76,20 @@ event.subscribe('global.escape', () => {
 })
 ```
 
+#### Resize
+
+```js
+import Event, { publishResize } from 'core-events'
+
+const event = new Event()
+
+publishResize({ event })
+
+event.subscribe('global.resize', () => {
+  console.log(`Somebody resizes the browser`)
+})
+```
+
 #### Scroll
 
 ```js

@@ -1,6 +1,7 @@
 import {
   publishClick,
   publishEscape,
+  publishResize,
   publishScroll,
   publishSwipe
 } from './publish'
@@ -51,6 +52,12 @@ class Event {
   }
 }
 
-export { publishClick, publishEscape, publishScroll, publishSwipe }
+export {
+  publishClick,
+  publishEscape,
+  publishResize,
+  publishScroll,
+  publishSwipe
+}
 
 export default Event
